@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    WifiManager wmgr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,10 +16,11 @@ public class MainActivity extends AppCompatActivity {
         Button btntOn = findViewById(R.id.btnOn);
         Button btntOff = findViewById(R.id.btnOFF);
 
+        wmgr = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+
         btntOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WifiManager wmgr = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                 wmgr.setWifiEnabled(true);
             }
         });
@@ -25,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         btntOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WifiManager wmgr = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                 wmgr.setWifiEnabled(false);
             }
         });
